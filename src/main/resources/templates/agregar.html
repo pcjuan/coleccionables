@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<nav th:replace="layout/layout :: header"></nav>
+
+	<div class="container">
+		<h1 class="display-4" th:text="${titulo}"></h1>
+
+		<form th:action="@{/agregar}" th:object="${producto}" method="post">
+			<div class="form-group">
+				<label class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nombre}" class="form-control"
+						placeholder="ej: Goku SS3" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 col-form-label">Marca</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{marca}" class="form-control"
+						placeholder="ej: Sh.Figuarts" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 col-form-label">Precio</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{precio}" class="form-control"
+						placeholder="35000" /> <small class="form-text text-danger"
+						th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 col-form-label">Fecha Salida</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{fechaSalida}" class="form-control"
+						placeholder="2019-01-01 12:00:12" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('fechaSalida')}"
+						th:errors="*{fechaSalida}"></small>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-6">
+					<input type="submit" class="btn btn-outline-secondary"
+						value="Crear Producto" />
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>
